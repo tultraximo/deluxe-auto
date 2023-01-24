@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
     api_list_appointments,
     api_list_technicians,
+    api_list_AutomobileVO
 )
 
 urlpatterns = [
@@ -20,5 +21,10 @@ urlpatterns = [
         "technicians/",
         api_list_technicians,
         name="api_list_technicians",
-    )
+    ),
+    path(
+        "vo/",
+        api_list_AutomobileVO,
+        name="api_list_AutomobileVO",
+    ),
 ]

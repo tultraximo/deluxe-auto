@@ -4,6 +4,13 @@ import json
 from .models import Technician, Appointment, AutomobileVO
 from common.json import ModelEncoder
 
+class AutomobileVOEncoder(ModelEncoder):
+    model = AutomobileVO
+    properties = [
+        "vin",
+        # "employee_number",
+    ]
+
 class TechnicianEncoder(ModelEncoder):
     model = Technician
     properties = [
@@ -89,3 +96,13 @@ def api_list_appointments(request):
             )
             response.status_code = 400
             return response
+
+
+@require_http_methods(["GET", "POST"])
+def api_list_AutomobileVO(request):
+    if request.method == "GET":
+        VO = AutomobileVO.objects.all()
+        return JsonResponse(
+            {"automobile":VO},
+            encoder=AutomobileVOEncoder,
+        )
