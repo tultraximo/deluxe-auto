@@ -69,7 +69,6 @@ function AppointmentForm () {
       }
 
 
-
     const fetchData = async () => {
         const url = "http://localhost:8080/api/technicians/"
 
@@ -77,9 +76,7 @@ function AppointmentForm () {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data)
             setTechnician(data.technicians)
-            console.log(technician)
         }
         }
 
