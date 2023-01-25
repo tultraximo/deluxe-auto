@@ -74,7 +74,6 @@ def api_list_appointments(request):
     else:
         try:
             content = json.loads(request.body)
-            # print(content)
             technician = Technician.objects.get(id=content["technician"])
             content["technician"] = technician
             try:

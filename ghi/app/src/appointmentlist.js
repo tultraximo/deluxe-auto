@@ -49,10 +49,6 @@ function AppointmentList() {
             {appointments.map((appointment) => {
               const newdate = new Date(appointment.time);
               const options = { timeStyle: "short" };
-              if (
-                appointment.canceled === false &&
-                appointment.completed === false
-              ) {
                 return (
                   <tr key={appointment.id}>
                     <td>{appointment.service_vin}</td>
@@ -86,7 +82,7 @@ function AppointmentList() {
                     </td>
                   </tr>
                 );
-              }
+
             })}
           </tbody>
         </table>
