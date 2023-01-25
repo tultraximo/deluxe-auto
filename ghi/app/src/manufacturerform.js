@@ -1,29 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
-function TechnicianForm () {
+function ManufacturerForm () {
+
     const [name, setName] = useState('');
     const handleNameChange = (event) => {
-      const value = event.target.value;
-      setName(value);
-    }
-
-
-    const [employee_number, setEmployee_number] = useState('');
-    const handleEmployee_numberChange = (event) => {
-      const value = event.target.value;
-      setEmployee_number(value);
-    }
+        const value = event.target.value;
+        setName(value);
+      }
 
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         const data = {}
         data.name = name
-        data.employee_number = employee_number
-
-
-        const url = 'http://localhost:8080/api/technicians/';
+        const url = 'http://localhost:8100/api/manufacturers/';
         const fetchConfig = {
           method: "post",
           body: JSON.stringify(data),
@@ -31,17 +21,15 @@ function TechnicianForm () {
             'Content-Type': 'application/json',
             },
         };
-          
+
         const response = await fetch(url, fetchConfig);
         if (response.ok) {
-          const newTechnician = await response.json();
-          console.log(newTechnician);
+          const newManufacturer = await response.json();
+          console.log(newManufacturer);
 
           setName('');
-          setEmployee_number('');
         }
       }
-
 
 
 
@@ -49,20 +37,14 @@ function TechnicianForm () {
         <div className="row">
                 <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
-                    <h1>Create a new technician</h1>
-                    <form onSubmit={handleSubmit} id="create-technician-form">
+                    <h1>Create a new manufacturer</h1>
+                    <form onSubmit={handleSubmit} id="create-manufacturer-form">
                     <div className="form-floating mb-3">
                         <input onChange={handleNameChange} value={name} placeholder="Name" required type="text" name="name" id="name" className="form-control"/>
                         <label htmlFor="name">Name</label>
                     </div>
-                    <div className="form-floating mb-3">
-                        <input onChange={handleEmployee_numberChange} value={employee_number} placeholder="employee_number" required type="text" name="employee_number" id="employee_number" className="form-control"/>
-                        <label htmlFor="employee_number">Employee Number</label>
-                    </div>
-
 
                     <button className="btn btn-primary">Create</button>
-
 
                     </form>
 
@@ -72,4 +54,4 @@ function TechnicianForm () {
         );
 }
 
-export default TechnicianForm;
+export default ManufacturerForm;

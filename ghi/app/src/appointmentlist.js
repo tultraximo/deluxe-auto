@@ -1,5 +1,4 @@
 import React, { useEffect, useState, } from "react";
-import { Link } from "react-router-dom";
 
 function AppointmentList() {
     const [appointments, setAppointments] = useState([]);
@@ -38,10 +37,12 @@ function AppointmentList() {
             <tr>
               <th>VIN</th>
               <th>Customer</th>
+              <th>Date</th>
               <th>Time</th>
               <th>Reason</th>
               <th>Technician</th>
               <th>VIP</th>
+
             </tr>
           </thead>
           <tbody>
@@ -58,15 +59,17 @@ function AppointmentList() {
                     <td>{appointment.customer_name}</td>
                     <td>{newdate.toLocaleDateString()}</td>
                     <td>{newdate.toLocaleTimeString([], options)}</td>
-                    <td>{appointment.technician.name}</td>
                     <td>{appointment.reason}</td>
-                    {/* {this.hasVIP(appointment.discount)} */}
+                    <td>{appointment.technician.name}</td>
+                    <td>{String(appointment.vip)}</td>
+                    {/* {Vip} write a function for the onclick below, that updates model to true*/}
                     <td>
                       <button
                         type="button"
                         className="btn btn-danger"
-                        onClick={(e) =>
+                        onClick={(event) =>
                           console.log(appointments)
+
                         }
                       >
                         Cancel
@@ -74,7 +77,7 @@ function AppointmentList() {
                       <button
                         type="button"
                         className="btn btn-success"
-                        onClick={(e) =>
+                        onClick={(event) =>
                           console.log(appointments)
                         }
                       >

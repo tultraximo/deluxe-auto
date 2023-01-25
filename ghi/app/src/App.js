@@ -6,26 +6,15 @@ import TechnicianForm from './technicianform';
 import AppointmentForm from './appointmentform';
 import AppointmentList from './appointmentlist';
 import AppointmentHistory from './appointmenthistory';
+import ManufacturerList from './manufacturerlist';
+import ModelList from './modellist';
+import AutomobileList from './automobilelist';
+import ManufacturerForm from './manufacturerform';
+import ModelForm from './modelform';
+import AutomobileForm from './automobileform';
+
 
 function App() {
-  // const [appointments, setAppointments] = useState()
-
-
-  // const getAppointments = async () => {
-  //   const url = "http://localhost:8080/api/appointments/"
-
-  //   const response = await fetch(url);
-
-  //   if (response.ok) {
-  //       const data = await response.json();
-  //       // console.log(data)
-  //       setAppointments(data.appointments)
-  //   }
-  //   }
-
-  //   useEffect(() => {
-  //     getAppointments();
-  //     }, []);
 
 
   return (
@@ -34,10 +23,16 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="technician/" element={<TechnicianForm />} />
-          <Route path="appointment/" element={<AppointmentForm />} />
-          <Route path="appointment/list/" element={<AppointmentList />} />
+          <Route path="technician/add/" element={<TechnicianForm />} />
+          <Route path="appointment/add/" element={<AppointmentForm />} />
+          <Route path="appointment/view/" element={<AppointmentList />} />
           <Route path="appointment/history/" element={<AppointmentHistory />} />
+          <Route path="manufacturer/view/" element={<ManufacturerList />} />
+          <Route path="manufacturer/add/" element={<ManufacturerForm />} />
+          <Route path="model/view/" element={<ModelList />} />
+          <Route path="model/add/" element={<ModelForm />} />
+          <Route path="automobile/view/" element={<AutomobileList />} />
+          <Route path="automobile/add/" element={<AutomobileForm />} />
         </Routes>
       </div>
     </BrowserRouter>

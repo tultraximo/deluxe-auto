@@ -108,12 +108,6 @@ function AppointmentForm () {
                         <label htmlFor="reason">Reason</label>
                     </div>
 
-
-                    {/* <div className="form-floating mb-3">
-                        <textarea onChange={handleTimeChange} value={time} placeholder="time" required type="time" name="time" id="time" className="form-control"/>
-                        <label htmlFor="time">Time</label>
-                    </div> */}
-
                     <div className="form-floating mb-3">
                         <input onChange={handleTimeChange} value={time} placeholder="time" required type="date" name="time" id="time" className="form-control"/>
                         <label htmlFor="time">Date</label>

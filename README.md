@@ -75,11 +75,11 @@ Service API inks:
 
 2 Appointments list/create http://localhost:8080/api/appointments/
 		{
-			"vin":"xxx",
-			"customer_name": "betetetob",
+			"vin":"DKKJKDKDKD",
+			"customer_name": "chrissy",
 			"date": "2012-04-23T18:25:43.511Z",
 			"technician_name": 1,
-			"reason":"you suck",
+			"reason":"who cares",
 			"in_inventory":true
 		}
 
@@ -88,7 +88,7 @@ Sales API links:
 1. Sales Person List/Create: http://localhost:8090/api/sales_rest/sales_person/
    Dumby data:
 {
-  "name": "Mario",
+  "name": "Luigi",
   "employee_id": "65349053"
 }
 
@@ -114,5 +114,5 @@ Sales API links:
 
  If you didn't identify the VOs in your diagram, then identify them here.
 
-AutoVO in sales models
-Inventory_vinVO in service models
+AutomobileVO in sales models
+AutomobileVO in service models

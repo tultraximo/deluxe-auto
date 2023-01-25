@@ -10,20 +10,38 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {/* <li className="nav-item">
+            <li className="nav-item">
                   <a className="nav-link" aria-current="page" href="/">Home</a>
-                </li> */}
+                </li>
             <li className="nav-item">
-            <NavLink className="nav-link" to="technician/">Add Technician</NavLink>
+            <NavLink className="nav-link" to="technician/add">Add Technician</NavLink>
             </li>
             <li className="nav-item">
-            <NavLink className="nav-link" to="appointment/">Add Appointment</NavLink>
+            <NavLink className="nav-link" to="appointment/add">Add Appointment</NavLink>
             </li>
             <li className="nav-item">
-            <NavLink className="nav-link" to="appointment/list">Display Appointments</NavLink>
+            <NavLink className="nav-link" to="appointment/view">Active Appointments</NavLink>
             </li>
             <li className="nav-item">
             <NavLink className="nav-link" to="appointment/history">Appointment History</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" to="manufacturer/view">View Manufacturers</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" to="manufacturer/add">Add Manufacturers</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" to="model/view">View Models</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" to="model/add">Add Models</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" to="automobile/view">View Automobiles</NavLink>
+            </li>
+            <li className="nav-item">
+            <NavLink className="nav-link" to="automobile/add">Add Automobiles</NavLink>
             </li>
           </ul>
         </div>

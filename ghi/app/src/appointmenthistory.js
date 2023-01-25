@@ -1,16 +1,15 @@
 import React, { useEffect, useState, } from "react";
-import { Link } from "react-router-dom";
-
 
 function AppointmentHistory() {
     const [appointments, setAppointments] = useState([]);
     const [inputvin, setInputVIN] = useState('');
-    // const [filtered, setFiltered] = useState([]);
+
 
     const handleInputVINChange = (event) => {
         const value = event.target.value;
         setInputVIN(value);
       }
+
 
     const getAppointments = async () => {
       const url = "http://localhost:8080/api/appointments/"
@@ -47,11 +46,7 @@ function AppointmentHistory() {
 
             </div>
             <div className="col-sm-auto d-flex justify-content-center align-items-center">
-              {/* <Link to="/appointments">
-                <button type="button" className="btn btn-primary">
-                  Create
-                </button>
-              </Link> */}
+
             </div>
           </div>
         </div>
@@ -68,8 +63,8 @@ function AppointmentHistory() {
           </thead>
           <tbody>
             {appointments.map((appointment) => {
-              // const newdate = new Date(appointment.time);
-              // const options = { timeStyle: "short" };
+              const newdate = new Date(appointment.time);
+              const options = { timeStyle: "short" };
               if (
                 inputvin === appointment.service_vin
               ) {
@@ -77,11 +72,10 @@ function AppointmentHistory() {
                   <tr key={appointment.id}>
                     <td>{appointment.service_vin}</td>
                     <td>{appointment.customer_name}</td>
-                    <td>"//"</td>
-                    <td>"//"</td>
+                    <td>{newdate.toLocaleDateString()}</td>
+                    <td>{newdate.toLocaleTimeString([], options)}</td>
                     <td>{appointment.technician.name}</td>
                     <td>{appointment.reason}</td>
-                    {/* {this.hasVIP(appointment.discount)} */}
                   </tr>
                 );
               }
@@ -93,49 +87,3 @@ function AppointmentHistory() {
   }
 
 export default AppointmentHistory;
-
-
-
-
-
-
-
-
-
-
-  // function hasVIP(value)
-  // {
-  //   if(value){
-  //     return <td>&#10004;</td>;
-  //   } else {
-  //     return <td></td>;
-  //   }
-  // }
-
-  // async cancelAppointment(id) {
-  //   const url = `http://localhost:8080/api/appointments/${id}/cancel/`;
-  //   const fetchConfig = {
-  //     method: "put",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
-  //   const response = await fetch(url, fetchConfig);
-  //   if (response.ok) {
-  //     this.componentDidMount();
-  //   }
-  // }
-
-  // async completeAppointment(id) {
-  //   const url = `http://localhost:8080/api/appointments/${id}/complete/`;
-  //   const fetchConfig = {
-  //     method: "put",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
-  //   const response = await fetch(url, fetchConfig);
-  //   if (response.ok) {
-  //     this.componentDidMount();
-  //   }
-  // }
