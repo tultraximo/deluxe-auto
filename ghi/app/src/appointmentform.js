@@ -108,13 +108,26 @@ function AppointmentForm () {
                         <label htmlFor="reason">Reason</label>
                     </div>
 
-                    <div className="form-floating mb-3">
-                        <input onChange={handleTimeChange} value={time} placeholder="time" required type="date" name="time" id="time" className="form-control"/>
+                    <div className="form-floating mb-3"
+                    >
+                        <input
+                        onChange={handleTimeChange}
+                        value={time}
+                        placeholder="time"
+                        required type="date"
+                        name="time" id="time"
+                        className="form-control"/>
                         <label htmlFor="time">Date</label>
                     </div>
 
                     <div className="mb-3">
-                        <select onChange={handleSelectedTechnicianChange} required id="technician" name="technician" className="form-select">
+                        <select
+                         onChange={handleSelectedTechnicianChange}
+                         required id="technician"
+                         name="technician"
+                         className="form-select"
+                         >
+
                             <option value="">Choose a Technician</option>
                             {technician.map(tech => {
                                 return (
