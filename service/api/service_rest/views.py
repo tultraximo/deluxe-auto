@@ -43,6 +43,30 @@ class AppointmentEncoder(ModelEncoder):
             "id": o.id,
         }
 
+@require_http_methods(["POST"])
+def api_update_appointment_vip(request, appointment_id):
+    try:
+        appointment = Appointment.objects.get(id=appointment_id)
+        appointment.vip = not appointment.vip
+        appointment.save()
+        return JsonResponse(
+            {"message": f"Appointment {appointment_id} VIP status updated successfully."},
+            status=200
+        )
+    except Appointment.DoesNotExist:
+        response = JsonResponse(
+            {"message": f"Appointment {appointment_id} not found."},
+            status=404
+        )
+        return response
+    except Exception as e:
+        response = JsonResponse(
+            {"message": "An error occurred while updating the VIP status."},
+            status=500
+        )
+        return response
+
+
 
 @require_http_methods(["GET", "POST"])
 def api_list_technicians(request):

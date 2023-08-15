@@ -14,6 +14,35 @@ function AppointmentList() {
       }
     }
 
+    // write a function to update z
+
+    const updateVipStatus = async (appointmentId) => {
+      const url = `http://localhost:8080/api/appointments/${appointmentId}/update-vip/`;
+      const fetchConfig = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ appointment_id: appointmentId }),
+      }
+      const response = await fetch(url, fetchConfig);
+
+      if (response.ok) {
+        getAppointments();
+      } else {
+        console.log("Update Failed", response.statusText)
+      }
+    }
+
+    // const url = 'http://localhost:8080/api/appointments/';
+    // const fetchConfig = {
+    //   method: "post",
+    //   body: JSON.stringify(data),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     },
+    // };
+
     useEffect(() =>
       {getAppointments()}, []
     )
@@ -57,7 +86,19 @@ function AppointmentList() {
                     <td>{newdate.toLocaleTimeString([], options)}</td>
                     <td>{appointment.reason}</td>
                     <td>{appointment.technician.name}</td>
-                    <td>{String(appointment.vip)}</td>
+                    <td>{String(appointment.vip)}
+                    <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={() =>
+                          // console.log(appointments)
+                          updateVipStatus(appointment.id)
+                        }
+                        style={{ marginLeft: "8px" }}  // Add some margin to the right
+                      >
+                        VIP?
+                      </button>
+                    </td>
                     {/* {Vip} write a function for the onclick below, that updates model to true*/}
                     <td>
                       <button
