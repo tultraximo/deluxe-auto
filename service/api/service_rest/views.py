@@ -66,6 +66,26 @@ def api_update_appointment_vip(request, appointment_id):
         )
         return response
 
+@require_http_methods(["POST"])
+def api_update_appointment_canceled(request, appointment_id):
+    appointment = Appointment.objects.get(id=appointment_id)
+    appointment.canceled = not appointment.canceled
+    appointment.save()
+    return JsonResponse(
+        {"message": f"Appointment {appointment_id} VIP status updated successfully."},
+        status=200
+    )
+
+@require_http_methods(["POST"])
+def api_update_appointment_completed(request, appointment_id):
+    appointment = Appointment.objects.get(id=appointment_id)
+    appointment.completed = not appointment.completed
+    appointment.save()
+    return JsonResponse(
+        {"message": f"Appointment {appointment_id} VIP status updated successfully."},
+        status=200
+    )
+
 
 
 @require_http_methods(["GET", "POST"])

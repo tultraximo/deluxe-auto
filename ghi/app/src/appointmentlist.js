@@ -34,14 +34,41 @@ function AppointmentList() {
       }
     }
 
-    // const url = 'http://localhost:8080/api/appointments/';
-    // const fetchConfig = {
-    //   method: "post",
-    //   body: JSON.stringify(data),
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     },
-    // };
+    const updateCanceledStatus = async (appointmentId) => {
+      const url = `http://localhost:8080/api/appointments/${appointmentId}/update-canceled/`;
+      const fetchConfig = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ appointment_id: appointmentId }),
+      }
+      const response = await fetch(url, fetchConfig);
+
+      if (response.ok) {
+        getAppointments();
+      } else {
+        console.log("Update Failed", response.statusText)
+      }
+    }
+
+    const updateCompletedStatus = async (appointmentId) => {
+      const url = `http://localhost:8080/api/appointments/${appointmentId}/update-completed/`;
+      const fetchConfig = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ appointment_id: appointmentId }),
+      }
+      const response = await fetch(url, fetchConfig);
+
+      if (response.ok) {
+        getAppointments();
+      } else {
+        console.log("Update Failed", response.statusText)
+      }
+    }
 
     useEffect(() =>
       {getAppointments()}, []
@@ -104,9 +131,9 @@ function AppointmentList() {
                       <button
                         type="button"
                         className="btn btn-danger"
-                        onClick={(event) =>
-                          console.log(appointments)
-
+                        onClick={() =>
+                          // console.log(appointments)
+                          updateCanceledStatus(appointment.id)
                         }
                       >
                         Cancel
@@ -115,7 +142,8 @@ function AppointmentList() {
                         type="button"
                         className="btn btn-success"
                         onClick={(event) =>
-                          console.log(appointments)
+                          updateCompletedStatus(appointment.id)
+                          // console.log(appointments)
                         }
                       >
                         Completed
