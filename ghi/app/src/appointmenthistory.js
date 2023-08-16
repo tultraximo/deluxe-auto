@@ -59,6 +59,8 @@ function AppointmentHistory() {
               <th>Reason</th>
               <th>Technician</th>
               <th>VIP</th>
+              <th>Canceled?</th>
+              <th>Completed?</th>
             </tr>
           </thead>
           <tbody>
@@ -66,7 +68,7 @@ function AppointmentHistory() {
               const newdate = new Date(appointment.time);
               const options = { timeStyle: "short" };
               if (
-                inputvin === appointment.service_vin
+                inputvin === "all"
               ) {
                 return (
                   <tr key={appointment.id}>
@@ -76,9 +78,28 @@ function AppointmentHistory() {
                     <td>{newdate.toLocaleTimeString([], options)}</td>
                     <td>{appointment.technician.name}</td>
                     <td>{appointment.reason}</td>
+                    <td>{appointment.canceled.toString()}</td>
+                    <td>{appointment.completed.toString()}</td>
                   </tr>
                 );
               }
+              else if (inputvin === appointment.service_vin) {
+                // Display appointments based on inputvin
+                return (
+                    <tr key={appointment.id}>
+                        <td>{appointment.service_vin}</td>
+                        <td>{appointment.customer_name}</td>
+                        <td>{newdate.toLocaleDateString()}</td>
+                        <td>{newdate.toLocaleTimeString([], options)}</td>
+                        <td>{appointment.technician.name}</td>
+                        <td>{appointment.reason}</td>
+                        <td>{appointment.canceled.toString()}</td>
+                        <td>{appointment.completed.toString()}</td>
+                    </tr>
+                );
+            } else {
+                return null; // Skip rendering if not matching the condition
+            }
             })}
           </tbody>
         </table>
