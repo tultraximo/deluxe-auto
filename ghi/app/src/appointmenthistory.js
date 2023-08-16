@@ -68,7 +68,7 @@ function AppointmentHistory() {
               const newdate = new Date(appointment.time);
               const options = { timeStyle: "short" };
               if (
-                inputvin === "all"
+                inputvin === ""
               ) {
                 return (
                   <tr key={appointment.id}>
