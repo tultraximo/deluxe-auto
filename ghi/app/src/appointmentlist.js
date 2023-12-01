@@ -103,7 +103,7 @@ function AppointmentList() {
           </thead>
           <tbody>
             {appointments.map((appointment) => {
-              if (appointment.canceled || appointment.completed) {
+              if (!appointment.canceled && !appointment.completed) {
               const newdate = new Date(appointment.time);
               const options = { timeStyle: "short" };
                 return (

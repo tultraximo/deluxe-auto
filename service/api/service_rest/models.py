@@ -35,9 +35,9 @@ class Appointment(models.Model):
     )
 
     def cancel(self):
-        self.canceled = True
+        self.canceled = not self.canceled
         self.save()
 
     def complete(self):
-        self.completed = True
+        self.completed = not self.completed
         self.save()
